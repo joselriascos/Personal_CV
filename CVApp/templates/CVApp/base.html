@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTAFOLIO</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'fig/icono.jpg' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ovo&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ovo&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>JOSE LUIS RIASCOS CUBILLOS</h1>
+        <p>Estudiante de Ingeniería Civil - Décimo Semestre</p>
+    </header>
+    <div class="container-barra">
+        <nav>
+            <ul>
+                <li><a href="{% url 'Home' %}" class="{% if request.path == '/' %} active {% endif %}">CURRICULUM</a></li>
+                <li><a href="{% url 'Proyectos' %}" class="{% if request.path|slice:'9' == '/proyecto' %} active {% endif %}">PROYECTOS ACADÉMICOS</a></li>
+                <li><a href="{% url 'Contacto' %}" class="{% if request.path == '/contacto/' %} active {% endif %}">CONTACTO</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+
+    <!-- contenido cambiante -->
+    {% block content %}
+
+    {% endblock %}

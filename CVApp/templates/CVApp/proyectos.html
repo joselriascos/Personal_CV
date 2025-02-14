@@ -1,0 +1,62 @@
+{% extends "CVApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-proyectos">
+
+    {% if proyectos %}
+
+    {% for proyecto in proyectos %}
+
+        <div class="tarjeta">
+            <a href="{% url 'Detalle_proyecto' proyecto.id %}">
+                <div class="container-img">
+                    <img src="{{proyecto.imagen.url}}">
+                    <div class="div-oculto">
+                        <p>Más información</p>
+                    </div>
+                </div>
+            </a>
+            <div class="footer-tarjeta">
+                <h4>{{proyecto.titulo}}</h4>
+                <p>{{proyecto.descripcion}}</p>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    {% else %}
+
+        <h2 id="no_proyectos">No hay proyectos en este momento...</h2>
+
+    {% endif %}
+
+</div>
+
+<!-- controles de paginación -->
+<div class="paginacion">
+    <ul>
+        {% if proyectos.has_previous %}
+        <li><a href="?page=1">&laquo; Primero</a></li>
+        <li><a href="?page={{proyectos.previous_page_number}}">&lsaquo; Anterior</a></li>
+        {% endif %}
+
+        <!-- Mostrar todas las páginas disponibles -->
+         {% for num_pag in rango_paginas %}
+                {% if proyectos.number == num_pag %}
+                <li><a href="#" class="page-active">{{num_pag}}</a></li>
+                {% else %}
+                <li><a href="?page={{num_pag}}">{{num_pag}}</a></li>
+                {% endif %}
+        {% endfor %}
+
+        {% if proyectos.has_next %}
+        <li><a href="?page={{proyectos.next_page_number}}">Siguiente &rsaquo;</a></li>
+        <li><a href="?page={{proyectos.paginator.num_pages}}">Último &raquo;</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+{% endblock %}

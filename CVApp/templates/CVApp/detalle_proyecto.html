@@ -1,0 +1,34 @@
+{% extends "CVApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container-detalle-proyecto">
+        <div class="proyecto-imagen">
+            <img src="{{proyecto.imagen.url}}" alt="{{proyecto.titulo}}">
+        </div>
+        <div class="proyecto-info">
+            <h2>{{proyecto.titulo}}</h2>
+            <p>{{proyecto.descripcion}}</p>
+            <table class="proyecto-detalles">
+                <tr>
+                    <th>Fecha de actualización:</th>
+                    <td>{{proyecto.updated}} (GMT-5)</td>
+                </tr>
+                <tr>
+                    <th>Tecnologías usadas:</th>
+                    <td>
+                        {% for tecnologia in proyecto.tecnologias.all %}
+                        {{tecnologia.nombre}}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
+            <a href="{% if proyecto.link %} {{proyecto.link}} {% else %} # {% endif %}" class="proyecto-enlace"
+            target="{% if proyecto.link %} _blank {% endif %}">
+                Ver proyecto
+            </a>
+            <a href="{% url 'Proyectos' %}" class="proyecto-enlace" style="margin-top: 10px;">Volver</a>
+        </div>
+    </div>
+{% endblock %}

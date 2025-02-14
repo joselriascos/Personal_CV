@@ -1,0 +1,100 @@
+{% extends "CVApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container">
+    <div class="barra-lateral">
+        <img src="{% static 'fig/Foto.jpeg' %}" alt="Jose Luis Riascos Cubillos">
+        <h2>PERFIL</h2>
+        <p>Estudiante de último semestre de Ingeniería Civil en la Universidad del Cauca, destacado por un rendimiento académico sobresaliente y un amplio conocimiento en las diversas áreas y disciplinas de la ingeniería civil. Tengo conocimiento y experiencia en el manejo de los programas AutoCAD, Revit, Topo3, SAP2000, ETABS, así como experiencia en el uso de herramientas de ofimática. Además, cuento con un sólido dominio del idioma inglés y experiencia en el uso de lenguajes de programación y herramientas de análisis, tales como Python, MATLAB, VBA y Microsoft Excel.<br><br>
+            A lo largo de mi formación he demostrado un alto desempeño y entrega en cada una de las labores que me han sido encomendadas. Mi dedicación a la búsqueda de la excelencia, respaldada por mi capacidad para afrontar desafíos en mis labores, me sitúa como una persona altamente competente y comprometida con la excelencia en el campo de la ingeniería civil.</p>
+        <br><br>
+        <h2>CONTACTO</h2>
+        <p class="subtitulo-barra"><strong>Celular</strong></p>
+        <p><a href="tel:+573218797465" class="link-contacto" target="_self">(+57) 321-879-7465</a></p>
+        <p class="subtitulo-barra"><strong>Correo electrónico</strong></p>
+        <p><a href="mailto:joseluis.riascos10@gmail.com" target="_blank" class="link-contacto">joseluis.riascos10@gmail.com</a></p>
+        <p><a href="mailto:joselriascos@unicauca.edu.co" target="_blank" class="link-contacto">joselriascos@unicauca.edu.co</a></p>
+        <p class="subtitulo-barra"><strong>LinkedIn</strong></p>
+        <p><a href="http://www.linkedin.com/in/jose-luis-riascos-cubillos-584367268" class="link-contacto" target="_blank">
+            www.linkedin.com/in/jose-luis-riascos-cubillos-584367268
+        </a></p>
+    </div>
+
+    <div class="principal">
+        <h2>INFORMACIÓN PERSONAL</h2>
+        <table>
+            <tr>
+                <td><p>Fecha de nacimiento:</p></td>
+                <td class="columna-2"><p>26 de agosto de 2001</p></td>
+            </tr>
+            <tr>
+                <td><p>Lugar de nacimiento:</p></td>
+                <td class="columna-2"><p>Popayán, Cauca</p></td>
+            </tr>
+        </table>
+
+        <h2>EDUCACIÓN</h2>
+        {% for institucion in instituciones %}
+
+            <h3>{{institucion.nombre}}</h3>
+            <p><strong>{{institucion.titulo_obtenido}}</strong></p>
+            <p>{{institucion.fecha}}</p>
+
+        {% endfor %}
+
+        <h2>EXPERIENCIA LABORAL</h2>
+        {% for experiencia in experiencias %}
+
+            <h3>{{experiencia.empresa}}</h3>
+            <p>{{experiencia.periodo_tiempo}}</p>
+            <p>{{experiencia.cargo}}</p>
+
+        {% endfor %}
+
+        <h2>REFERENCIAS LABORALES</h2>
+        {% for referencia in referencias_laborales %}
+            <h3>{{referencia.nombre}}</h3>
+            {% if referencia.cargo %}
+            <p>{{referencia.cargo}}</p>
+            {% endif %}
+            {% if referencia.empresa %}
+            <p>{{referencia.empresa}}</p>
+            {% endif %}
+            <p><a href="tel:+57{{referencia.telefono}}" class="color-principal link-contacto">{{referencia.telefono}}</a></p>
+        {% endfor %}
+
+        <h2>REFERENCIAS PERSONALES</h2>
+        {% for referencia in referencias_personales %}
+            <h3>{{referencia.nombre}}</h3>
+            {% if referencia.cargo %}
+            <p>{{referencia.cargo}}</p>
+            {% endif %}
+            {% if referencia.empresa %}
+            <p>{{referencia.empresa}}</p>
+            {% endif %}
+            <p><a href="tel:+57{{referencia.telefono}}" class="color-principal link-contacto">{{referencia.telefono}}</a></p>
+        {% endfor %}
+
+        <h2>REFERENCIAS FAMILIARES</h2>
+        {% for referencia in referencias_familiares %}
+            <h3>{{referencia.nombre}}</h3>
+            {% if referencia.cargo %}
+            <p>{{referencia.cargo}}</p>
+            {% endif %}
+            {% if referencia.empresa %}
+            <p>{{referencia.empresa}}</p>
+            {% endif %}
+            <p><a href="tel:+57{{referencia.telefono}}" class="color-principal link-contacto">{{referencia.telefono}}</a></p>
+        {% endfor %}
+
+        <div class="firma">
+            <img src="{% static 'fig/Firma.png' %}" alt="Firma">
+            <h2>JOSE LUIS RIASCOS CUBILLOS</h2>
+            <p>C.C. 1.002.961.970</p>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

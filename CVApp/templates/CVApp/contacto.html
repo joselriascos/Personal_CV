@@ -1,0 +1,49 @@
+{% extends "CVApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <h1 class="titulo-contacto">CONTACTO</h1>
+    <div class="container-contacto">
+        <div class="contacto-izquierda">
+            <div>
+                <img src="{% static 'fig/icono_telefono.png' %}" alt="Telefono">
+                <a href="tel:+573218797465" class="link-contacto" target="_self">(+57) 321-879-7465</a>
+            </div>
+
+            <div>
+                <img src="{% static 'fig/icono_correo.png' %}" alt="Correo">
+                <a href="mailto:joseluis.riascos10@gmail.com" target="_blank" class="link-contacto">joseluis.riascos10@gmail.com</a>
+            </div>
+
+            <div>
+                <img src="{% static 'fig/icono_correo.png' %}" alt="Correo">
+                <a href="mailto:joselriascos@unicauca.edu.co" target="_blank" class="link-contacto">joselriascos@unicauca.edu.co</a>
+            </div>
+
+            <div>
+                <img src="{% static 'fig/logo_linkedin.png' %}" alt="LinkedIn">
+                <a href="http://www.linkedin.com/in/jose-luis-riascos-cubillos-584367268" class="link-contacto" target="_blank">
+                    www.linkedin.com/in/jose-luis-riascos-cubillos-584367268
+                </a>
+            </div>
+        </div>
+
+        <div class="contacto-derecha">
+            {% if messages %}
+            {% for message in messages %}
+            <p class="mensaje-{{message.tags}}">{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+            <form action="" method="POST" name="contacto" id="contacto">{% csrf_token %}
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+                <input type="email" name="correo" id="correo" placeholder="Correo electrónico" required>
+                <textarea name="mensaje" id="mensaje" placeholder="Mensaje" form="contacto" rows="10" required></textarea>
+                <input type="submit" name="enviar" id="enviar" value="Enviar">
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}
