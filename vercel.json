@@ -1,5 +1,16 @@
 {
     "version": 2,
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Content-Security-Policy",
+            "value": "frame-ancestors 'self' http://localhost:5173 https://joselriascos-portfolio.netlify.app/;"
+          }
+        ]
+      }
+    ],
     "builds": [
       {
         "src": "manage.py",
