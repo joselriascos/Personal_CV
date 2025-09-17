@@ -75,43 +75,15 @@ class Experiencia_laboral(models.Model):
         return self.empresa
 
 
-class Referencia_laboral(models.Model):
+class Referencia(models.Model):
     nombre = models.CharField(max_length=100)
     cargo = models.CharField(max_length=100, blank=True, null=True)
     empresa = models.CharField(max_length=100, blank=True, null=True)
     telefono = models.PositiveBigIntegerField()
 
     class Meta:
-        verbose_name = "referencia_laboral"
-        verbose_name_plural = "referencias_laborales"
-
-    def __str__(self):
-        return self.nombre
-
-
-class Referencia_personal(models.Model):
-    nombre = models.CharField(max_length=100)
-    cargo = models.CharField(max_length=100, blank=True, null=True)
-    empresa = models.CharField(max_length=100, blank=True, null=True)
-    telefono = models.PositiveBigIntegerField()
-
-    class Meta:
-        verbose_name = "referencia_personal"
-        verbose_name_plural = "referencias_personales"
-
-    def __str__(self):
-        return self.nombre
-
-
-class Referencia_familiar(models.Model):
-    nombre = models.CharField(max_length=100)
-    cargo = models.CharField(max_length=100, blank=True, null=True)
-    empresa = models.CharField(max_length=100, blank=True, null=True)
-    telefono = models.PositiveBigIntegerField()
-
-    class Meta:
-        verbose_name = "referencia_familiar"
-        verbose_name_plural = "referencias_familiares"
+        verbose_name = "referencia"
+        verbose_name_plural = "referencias"
 
     def __str__(self):
         return self.nombre

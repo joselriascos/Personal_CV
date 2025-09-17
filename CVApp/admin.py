@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Proyecto, Institucion_educativa, Experiencia_laboral, Referencia_laboral, Referencia_personal, Referencia_familiar
+from .models import Proyecto, Institucion_educativa, Experiencia_laboral, Referencia
 from .models import Tecnologia
 
 # Register your models here.
@@ -27,7 +27,5 @@ class Tecnologia_admin(admin.ModelAdmin):
 admin.site.register(Proyecto, Proyecto_admin)
 admin.site.register(Institucion_educativa, Institucion_educativa_admin)
 admin.site.register(Experiencia_laboral, Experiencia_laboral_admin)
-admin.site.register(Referencia_laboral, Referencias_admin)
-admin.site.register(Referencia_personal, Referencias_admin)
-admin.site.register(Referencia_familiar, Referencias_admin)
+admin.site.register(Referencia, Referencias_admin)
 admin.site.register(Tecnologia, Tecnologia_admin)

@@ -20,6 +20,7 @@
         <p><a href="http://www.linkedin.com/in/jose-luis-riascos-cubillos-584367268" class="link-contacto" target="_blank">
             www.linkedin.com/in/jose-luis-riascos-cubillos-584367268
         </a></p>
+        <a href="" target="_blank" class="btn-descarga-cv">Descarga mi CV</a>
     </div>
 
     <div class="principal">
@@ -53,32 +54,8 @@
 
         {% endfor %}
 
-        <h2>REFERENCIAS LABORALES</h2>
-        {% for referencia in referencias_laborales %}
-            <h3>{{referencia.nombre}}</h3>
-            {% if referencia.cargo %}
-            <p>{{referencia.cargo}}</p>
-            {% endif %}
-            {% if referencia.empresa %}
-            <p>{{referencia.empresa}}</p>
-            {% endif %}
-            <p><a href="tel:+57{{referencia.telefono}}" class="color-principal link-contacto">{{referencia.telefono}}</a></p>
-        {% endfor %}
-
-        <h2>REFERENCIAS PERSONALES</h2>
-        {% for referencia in referencias_personales %}
-            <h3>{{referencia.nombre}}</h3>
-            {% if referencia.cargo %}
-            <p>{{referencia.cargo}}</p>
-            {% endif %}
-            {% if referencia.empresa %}
-            <p>{{referencia.empresa}}</p>
-            {% endif %}
-            <p><a href="tel:+57{{referencia.telefono}}" class="color-principal link-contacto">{{referencia.telefono}}</a></p>
-        {% endfor %}
-
-        <h2>REFERENCIAS FAMILIARES</h2>
-        {% for referencia in referencias_familiares %}
+        <h2>REFERENCIAS</h2>
+        {% for referencia in referencias %}
             <h3>{{referencia.nombre}}</h3>
             {% if referencia.cargo %}
             <p>{{referencia.cargo}}</p>
