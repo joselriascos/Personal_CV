@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
+
 # from storages.backends.s3boto3 import S3Boto3Storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,70 +24,70 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default=None)
+SECRET_KEY = config("SECRET_KEY", default=None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUGvalue', default=False, cast=bool)
+DEBUG = config("DEBUGvalue", default=False, cast=bool)
 
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '.now.sh']
+ALLOWED_HOSTS = [".vercel.app", "localhost", ".now.sh"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'CVApp',
-    'storages',
+    "whitenoise.runserver_nostatic",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "CVApp",
+    "storages",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'CV.urls'
+ROOT_URLCONF = "CV.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'CV.wsgi.application'
+WSGI_APPLICATION = "CV.wsgi.application"
 
 
 # Database
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DBname', default=None),
-        'USER': config('DBuser', default=None),
-        'PASSWORD': config('DBpassword', default=None),
-        'HOST': config('DBhost', default=None),
-        'PORT': config('DBport', default=None),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": config("DBname", default=None),
+        "USER": config("DBuser", default=None),
+        "PASSWORD": config("DBpassword", default=None),
+        "HOST": config("DBhost", default=None),
+        "PORT": config("DBport", default=None),
     }
 }
 
@@ -96,16 +97,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -113,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'es-co'
+LANGUAGE_CODE = "es-co"
 
-TIME_ZONE = 'America/Bogota'
+TIME_ZONE = "America/Bogota"
 
 USE_I18N = True
 
@@ -125,31 +126,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'CVApp/static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "CVApp/static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # configuración de email
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = config('EmailUser', default=None)
-EMAIL_HOST_PASSWORD = config('EmailPassword', default=None)
+EMAIL_HOST_USER = config("EmailUser", default=None)
+EMAIL_HOST_PASSWORD = config("EmailPassword", default=None)
 
 
 # configuración de media
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default=None)
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default=None)
-AWS_STORAGE_BUCKET_NAME = 'proyectosportafolio'
-AWS_S3_REGION_NAME = 'us-east-2'
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-AWS_QUERYSTRING_AUTH = False
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
+# Supabase storage
+SUPABASE_URL = config("SUPABASE_URL", default=None)
+SUPABASE_KEY = config("SUPABASE_KEY", default=None)
+SUPABASE_BUCKET_NAME = config("SUPABASE_BUCKET_NAME", default=None)
+
+DEFAULT_FILE_STORAGE = "CV.storage_backends.SupabaseStorage"
+
+MEDIA_URL = "/media/"
