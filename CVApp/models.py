@@ -80,10 +80,12 @@ class Referencia(models.Model):
     cargo = models.CharField(max_length=100, blank=True, null=True)
     empresa = models.CharField(max_length=100, blank=True, null=True)
     telefono = models.PositiveBigIntegerField()
+    orden = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     class Meta:
         verbose_name = "referencia"
         verbose_name_plural = "referencias"
+        ordering = ("orden",)
 
     def __str__(self):
         return self.nombre

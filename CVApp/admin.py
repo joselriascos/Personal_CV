@@ -1,31 +1,42 @@
 from django.contrib import admin
-from .models import Proyecto, Institucion_educativa, Experiencia_laboral, Referencia
-from .models import Tecnologia
+from adminsortable2.admin import SortableAdminMixin, SortableAdminBase
+from .models import (
+    Proyecto,
+    Institucion_educativa,
+    Experiencia_laboral,
+    Referencia,
+    Tecnologia,
+)
+
 
 # Register your models here.
+@admin.register(Proyecto)
 class Proyecto_admin(admin.ModelAdmin):
-    readonly_fields=("created","updated")
-    list_display=("titulo",)
-    search_fields=("titulo","descripcion")
+    readonly_fields = ("created", "updated")
+    list_display = ("titulo",)
+    search_fields = ("titulo", "descripcion")
 
+
+@admin.register(Institucion_educativa)
 class Institucion_educativa_admin(admin.ModelAdmin):
-    list_display=("nombre","titulo_obtenido")
-    search_fields=("nombre",)
+    list_display = ("nombre", "titulo_obtenido")
+    search_fields = ("nombre",)
 
+
+@admin.register(Experiencia_laboral)
 class Experiencia_laboral_admin(admin.ModelAdmin):
-    list_display=("empresa",)
-    search_fields=("empresa",)
+    list_display = ("empresa",)
+    search_fields = ("empresa",)
 
-class Referencias_admin(admin.ModelAdmin):
-    list_display=("nombre",)
-    search_fields=("nombre",)
 
+@admin.register(Referencia)
+class Referencia_admin(SortableAdminBase, admin.ModelAdmin):
+    list_display = ("nombre", "orden")
+    list_editable = ("orden",)
+    ordering = ("orden",)
+
+
+@admin.register(Tecnologia)
 class Tecnologia_admin(admin.ModelAdmin):
-    list_display=("nombre",)
-    search_fields=("nombre",)
-
-admin.site.register(Proyecto, Proyecto_admin)
-admin.site.register(Institucion_educativa, Institucion_educativa_admin)
-admin.site.register(Experiencia_laboral, Experiencia_laboral_admin)
-admin.site.register(Referencia, Referencias_admin)
-admin.site.register(Tecnologia, Tecnologia_admin)
+    list_display = ("nombre",)
+    search_fields = ("nombre",)
