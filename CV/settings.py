@@ -154,3 +154,15 @@ SUPABASE_BUCKET_NAME = config("SUPABASE_BUCKET_NAME", default=None)
 DEFAULT_FILE_STORAGE = "CV.storage_backends.SupabaseStorage"
 
 MEDIA_URL = "/media/"
+
+# configuración de CSRF & COOKIES
+CSRF_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://https://joselriascos-portfolio.netlify.app",
+    "http://localhost:5173",
+]
